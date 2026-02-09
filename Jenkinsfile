@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/patilcloud11/devops-node-docker.git'
+                git branch: 'main', url: 'https://github.com/patilcloud11/devops-node-docker.git'
             }
         }
 

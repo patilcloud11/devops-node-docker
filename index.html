@@ -4,60 +4,92 @@
 <title>DevOps Training</title>
 
 <style>
+
 body{
-  background:#0f1f25;
-  font-family:Arial;
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
 }
 
+/* Glass Card */
 .card{
-  background:#1f2f35;
-  padding:40px;
-  border-radius:10px;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.08);
+  padding:50px;
+  border-radius:15px;
   text-align:center;
-  color:white;
-  width:400px;
+  width:420px;
+  box-shadow:0px 10px 30px rgba(0,0,0,0.4);
+  animation: fadeIn 1.2s ease;
 }
 
 h1{
-  color:#00d1b2;
+  color:#00ffd5;
+  margin-bottom:10px;
 }
 
+p{
+  color:#d0d0d0;
+  font-size:18px;
+}
+
+/* Modern Button */
 button{
-  background:#00d1b2;
+  margin-top:25px;
+  background: linear-gradient(45deg,#00ffd5,#00bfa6);
   border:none;
-  padding:12px 20px;
-  border-radius:6px;
+  padding:14px 28px;
+  border-radius:30px;
+  font-size:16px;
   cursor:pointer;
-  margin-top:20px;
+  transition:0.3s;
+  box-shadow:0px 4px 15px rgba(0,255,213,0.4);
 }
-</style>
 
+button:hover{
+  transform: scale(1.08);
+  box-shadow:0px 6px 20px rgba(0,255,213,0.6);
+}
+
+#msg{
+  margin-top:20px;
+  color:#00ffd5;
+  font-weight:bold;
+}
+
+/* Animation */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="card">
 <h1>🚀 Welcome to DevOps Training</h1>
-<p>Application deployed inside Docker on AWS EC2</p>
+
+<p>Application deployed inside Docker on AWS EC2 By VISHESH PATIL</p>
 <p>Server running on Port 81</p>
 
 <button onclick="check()">Check Container</button>
 
 <p id="msg"></p>
-
 </div>
 
 <script>
 function check(){
- document.getElementById("msg").innerHTML=
- "Docker Container Running Successfully 🚀";
+ document.getElementById("msg").innerHTML =
+ "✅ Docker Container Running Successfully 🚀";
 }
 </script>
 
 </body>
 </html>
-

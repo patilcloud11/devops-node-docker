@@ -1,28 +1,43 @@
-# 🚀 DevOps Node Docker Application
+# 🚀 DevOps Node Docker Project – Jenkins CI/CD
 
-A simple **Node.js web application** containerized using **Docker** and deployed on **AWS EC2**.
-This project demonstrates a beginner-friendly **DevOps workflow** — from writing a Dockerfile to running a containerized application in the cloud.
+This project demonstrates how to deploy a **Node.js application** inside a **Docker container** using a **Jenkins CI/CD pipeline** on AWS EC2.
+Jenkins automates the build and deployment process whenever the pipeline is triggered.
 
 ---
 
 ## 📌 Project Overview
 
-This repository contains a lightweight Node.js server that serves a modern DevOps-themed UI page.
-The application is packaged inside a Docker container and exposed via a custom port.
-
-✅ Node.js Application
-✅ Docker Containerization
-✅ AWS EC2 Deployment
-✅ Simple DevOps UI
+* Source code stored in GitHub
+* Jenkins pulls the latest code
+* Docker image is built automatically
+* Existing container is stopped and replaced
+* Updated application runs on EC2
 
 ---
 
 ## 🧱 Tech Stack
 
-* **Node.js**
-* **Docker**
-* **HTML / CSS / JavaScript**
-* **AWS EC2 (Amazon Linux)**
+* Node.js
+* Docker
+* Jenkins (CI/CD)
+* AWS EC2 (Amazon Linux)
+
+---
+
+## ⚙️ CI/CD Workflow
+
+```
+GitHub Repository
+        │
+        ▼
+Jenkins Pipeline
+        │
+        ▼
+Docker Build
+        │
+        ▼
+Run Container on EC2
+```
 
 ---
 
@@ -31,118 +46,53 @@ The application is packaged inside a Docker container and exposed via a custom p
 ```
 devops-node-docker/
 │
-├── app.js          # Node.js server
-├── package.json    # Node project configuration
-├── index.html      # Frontend UI
-└── Dockerfile      # Docker build instructions
+├── app.js
+├── index.html
+├── package.json
+├── Dockerfile
+└── Jenkinsfile
 ```
 
 ---
 
-## ⚙️ How It Works
+## 🤖 Jenkins Pipeline Stages
 
-1. Node.js server runs on **Port 81**
-2. Dockerfile builds an image using the Node base image
-3. HTML UI is served from inside the container
-4. EC2 exposes the port via Security Group rules
-
-Architecture Flow:
-
-```
-User Browser
-      │
-      ▼
-AWS EC2 Instance
-      │
-      ▼
-Docker Container
-      │
-      ▼
-Node.js Server → index.html UI
-```
+1. Checkout Source Code
+2. Build Docker Image
+3. Stop Existing Container
+4. Run New Container
 
 ---
 
-## 🐳 Docker Setup (Local or EC2)
-
-### 1️⃣ Clone Repository
-
-```
-git clone https://github.com/patilcloud11/devops-node-docker.git
-cd devops-node-docker
-```
-
----
-
-### 2️⃣ Build Docker Image
+## 🐳 Docker Commands Used
 
 ```
 docker build -t devops-ui .
-```
-
----
-
-### 3️⃣ Run Container
-
-```
+docker stop devops-container || true
+docker rm devops-container || true
 docker run -d -p 81:81 --name devops-container devops-ui
 ```
 
 ---
 
-### 4️⃣ Open in Browser
+## 🌐 Access Application
 
 ```
-http://YOUR-EC2-PUBLIC-IP:81
-```
-
----
-
-## ☁️ AWS EC2 Setup
-
-Make sure your Security Group allows:
-
-```
-Type: Custom TCP
-Port: 81
-Source: 0.0.0.0/0
+http://EC2-PUBLIC-IP:81
 ```
 
 ---
 
 ## 🎯 Learning Objectives
 
-This project helps understand:
-
-* Containerization using Docker
-* Writing a Dockerfile
-* Running Node.js inside containers
-* Basic cloud deployment on AWS EC2
-* DevOps project structuring
-
----
-
-## 📸 Demo UI
-
-The application displays a modern DevOps training dashboard showing container status.
+* Jenkins Pipeline Creation
+* Docker Automation using Jenkins
+* CI/CD Deployment on AWS EC2
+* Real DevOps Workflow Implementation
 
 ---
 
 ## 👨‍💻 Author
 
-**Vishesh Patil**
+Vishesh Patil
 DevOps & Cloud Enthusiast
-
-GitHub: [https://github.com/patilcloud11](https://github.com/patilcloud11)
-
----
-
-## ⭐ Contributing
-
-Feel free to fork this repo, improve the UI, or enhance the Docker setup with CI/CD pipelines.
-
----
-
-## 📄 License
-
-This project is open-source and available under the MIT License.
